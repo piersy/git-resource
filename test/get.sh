@@ -156,8 +156,11 @@ it_can_use_submodlues_without_perl_warning() {
 
 it_can_retrieve_submodules_requiring_ssh_config() {
 
-  # set up root to know target host
+  # Clear existing config
+  rm -rf ~/.ssh
   mkdir -p ~/.ssh
+
+  # set up root to know target host
   ssh-keyscan 127.0.0.1 > ~/.ssh/known_hosts
   # make root's key
   ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
