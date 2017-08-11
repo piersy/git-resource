@@ -41,8 +41,8 @@ Tracks the commits in a [git](http://git-scm.com/) repository.
     Example:
     ```
     known_hosts: |
-      |1|KCXSa0KJnCIzB5UucUO...more random chars ...9EZvpaqtbxhZk8DR+xrI=
-      |1|01LwurJMVF6YVwfCv9o...more random chars ...ASnaJocGBNYwieuBC49U=
+      |1|KCXSa0KJnCIzB5UucUO... <more random chars> ...9EZvpaqtbxhZk8DR+xrI=
+      |1|01LwurJMVF6YVwfCv9o... <more random chars> ...ASnaJocGBNYwieuBC49U=
     ```
     Note: You can also use pipeline templating to hide the known hosts in source control. (For more information: https://concourse.ci/fly-set-pipeline.html)
 
