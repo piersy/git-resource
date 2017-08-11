@@ -105,24 +105,17 @@ init_remote_repo() {
   echo $repo_path
 }
 
-# Creates a remote repo on the given host and a local git repo with the
-# remote repo as submodule. Outputs the path to the local repo and the path
-# to the remote repo separated by a comma.
+# Creates a remote repo on the given host and a local git repo with the remote
+# repo as submodule. The given host must be localhost/127.0.0.X or be defined
+# in the ssh config passed to in.
 #
-# $1 -> ssh username and host string
-# $2 -> private key path
-# $3 -> ssh config path
-# $4 -> known hosts path
-
+# $1 -> ssh username and host string. E.g 'user@xxxxxx'
 init_repo_with_remote_submodule() {
-	#>&2 echo ssh -q -i "$2" "$1" "source $(dirname $0)/helpers.sh && init_remote_repo"
   local submodule=$(ssh -q "$1" "source $(dirname $0)/helpers.sh && init_remote_repo")
-  #local submodule=$(ssh -i "$2" -F "$3" -o UserKnownHostsFile="$4" -q "$1" "source $(dirname $0)/helpers.sh && init_remote_repo")
 
->&2 echo sssssssss $submodule
   local project=$(init_repo)
   export REMOTE_SUBMODULE="$submodule"
-  git -C $project submodule add "git@githost:$submodule" >/dev/null
+  git -C $project submodule add "$1:$submodule" >/dev/null
   git -C $project commit -m "Adding Submodule" >/dev/null
   echo $project,$submodule
 }
