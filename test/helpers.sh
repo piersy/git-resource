@@ -16,7 +16,7 @@ cleanup() {
 }
 
 export TMPDIR_ROOT=$(mktemp -d /tmp/git-tests.XXXXXX)
-#trap "cleanup" EXIT
+trap "cleanup" EXIT
 
 if [ -d /opt/resource ]; then
   resource_dir=/opt/resource
