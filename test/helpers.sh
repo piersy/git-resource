@@ -51,7 +51,6 @@ make_sshable_user(){
 	cat $2 > /home/$1/.ssh/authorized_keys
 }
 
-
 init_repo_at() {
   (
     set -e
